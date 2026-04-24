@@ -1,17 +1,21 @@
 import React from 'react';
 import NavbarSecured from '../components/NavbarSecured';
 import Hero from '../components/Hero';
-import Footer from '../components/Footer';
 import FAQSection from '../components/FAQSection';
+import Footer from '../components/Footer';
+
+// Importez ExpertiseSection si vous l'utilisez, sinon commentez la ligne 13
+// import ExpertiseSection from '../components/ExpertiseSection';
 
 export default function Home() {
   return (
     <>
       <NavbarSecured />
-      <div className="mt-5">
+      <main>
         <Hero />
+        {/* <ExpertiseSection /> */}
         <FAQSection />
-      </div>
+      </main>
       <Footer />
     </>
   );

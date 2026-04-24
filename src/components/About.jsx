@@ -1,118 +1,135 @@
-import { about } from '../assets/assets.js';
-import {
-  profile1Image as profileImg,
-} from '../assets/assets.js';
-// eslint-disable-next-line no-unused-vars
+import { about, profile1Image as profileImg } from '../assets/assets.js';
 import { motion } from 'framer-motion';
+import { 
+  FaShieldAlt, 
+  FaBuilding, 
+  FaChartLine, 
+  FaCogs, 
+  FaMapMarkerAlt, 
+  FaFileDownload,
+  FaHandshake,
+  FaUsers
+} from 'react-icons/fa';
+
 import LazyImage from './LazyImage';
 import GoogleMapsSection from './GoogleMapsSection';
 
 export default function About() {
   const containerVariants = {
     hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.3,
-        delayChildren: 0.2,
-      },
-    },
+    visible: { opacity: 1, transition: { staggerChildren: 0.2 } },
   };
 
-  const imageVariants = {
-    hidden: { opacity: 0, scale: 0.8, y: 30 },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      y: 0,
-      transition: {
-        duration: 0.8,
-        ease: 'easeOut',
-      },
-    },
-  };
-
-  const textVariants = {
+  const itemVariants = {
     hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.6,
-        ease: 'easeOut',
-      },
-    },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
   };
+
+  // Mise à jour pour CORDIALIS GROUPS sarl
+  const details = [
+    { 
+      icon: <FaBuilding />, 
+      title: "Vision 360°", 
+      text: "Une compréhension complète de la chaine de valeur de votre projet." 
+    },
+    { 
+      icon: <FaChartLine />, 
+      title: "Un interlocuteur Unique", 
+      text: "Simplifiez votre gestion grace à notre coordination multidisciplinaire." 
+    },
+    { 
+      icon: <FaUsers />, 
+      title: "Ethique & Professionnalisme", 
+      text: "Un engagement inconditionnel envers l'intégrité et la transparence." 
+    },
+  ];
 
   return (
-    <>
+    <div className="bg-slate-50 dark:bg-slate-950 pt-24 min-h-screen transition-colors duration-300">
       <motion.section
-        id="about"
-        className="relative pb-20 pt-0 overflow-hidden"
+        className="max-w-6xl mx-auto px-6 pb-20"
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.0 }}
+        viewport={{ once: true }}
         variants={containerVariants}
       >
-      
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+          
+          {/* Colonne Gauche : Direction & Identité */}
+          <motion.div className="lg:col-span-4 flex flex-col items-center" variants={itemVariants}>
+            <div className="relative group">
+              {/* Aura de couleur bleue pour Cordialis */}
+              <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-blue-900 rounded-full blur opacity-20 group-hover:opacity-40 transition duration-1000"></div>
+              <LazyImage
+                src={profileImg}
+                alt="Directeur CORDIALIS"
+                className="relative w-56 h-56 md:w-72 md:h-72 rounded-full object-cover border-4 border-white dark:border-slate-900 shadow-2xl"
+              />
+              <div className="absolute bottom-6 right-6 bg-blue-700 p-4 rounded-full border-4 border-white dark:border-slate-950 text-white shadow-2xl">
+                <FaBuilding size={24} />
+              </div>
+            </div>
+            
+            <div className="mt-8 text-center bg-white dark:bg-slate-900/50 p-8 rounded-3xl border border-slate-200 dark:border-slate-800 w-full shadow-lg backdrop-blur-md">
+              <h3 className="text-slate-900 dark:text-white font-bold text-2xl mb-1 tracking-tight uppercase">Charte & graphique</h3>
+              <p className="text-blue-700 font-bold text-xs uppercase tracking-[0.2em]">CEO CORDIALIS GROUPS sarl</p>
+              <div className="mt-4 pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-center gap-2 text-slate-500 text-sm">
+                <FaMapMarkerAlt className="text-blue-700" /> Kinshasa, RDC
+              </div>
+              
+              <button className="mt-6 flex items-center justify-center gap-2 w-full py-4 bg-slate-900 dark:bg-blue-800 hover:bg-blue-700 text-white text-xs font-bold rounded-xl transition-all shadow-md">
+                <FaFileDownload /> BROCHURE CORPORATE
+              </button>
+            </div>
+          </motion.div>
 
-        {/* Content */}
-        <div className="relative z-10 max-w-4xl mx-auto flex flex-col items-center">
-          <motion.div
-            variants={imageVariants}
-            whileHover={{
-              scale: 1.08,
-              rotate: [0, -3, 3, 0],
-              transition: { duration: 0.3 },
-            }}
-          >
-            <LazyImage
-              src={profileImg}
-              alt="Profil"
-              className="w-48 h-48 md:w-64 md:h-64 rounded-full object-cover mb-10 shadow-lg border-4 border-purple hover:scale-105 transition-transform duration-300"
-               style={{ objectPosition: 'center 10%' }}
-              placeholder={
-                <div className="w-48 h-48 md:w-64 md:h-64 rounded-full bg-gradient-to-br from-purple/20 to-pink/20 animate-pulse border-4 border-purple mb-10 shadow-lg" />
-              }
-            />
-          </motion.div>
-          <motion.h2
-            className="text-3xl md:text-4xl font-bold text-center mb-6"
-            variants={textVariants}
-          >
-            <span className="text-4xl md:text-4xl font-extrabold mt-12 bg-gradient-to-r from-red-700 to-red-300 to-red-200">
-              À propos de moi
-            </span>
-          </motion.h2>
-          <motion.p
-            className="text-lg text-gray-400 text-center leading-relaxed max-w-4xl mb-6"
-            variants={textVariants}
-          >
-            {about}
-          </motion.p>
-          <motion.div
-            className="text-base md:text-lg text-gray-400 border-t border-gray-300  text-center max-w-2xl space-y-4"
-            variants={textVariants}
-          >
-            <p className='"border border-purple/40"'>
-              <strong>Expertise complète :</strong> Louiscar.CRP offre une gamme complète de services en relations publiques et en maintenance système, assurant la visibilité de votre marque tout en garantissant la performance et la sécurité de vos infrastructures IT.
-            </p>
-            <p className='"border border-purple/40"'>
-              <strong>Mes cértifications:</strong> Je suis certifié en gestion de projet (PMP), en sécurité informatique (CEH), et en administration système (Linux+), ce qui me permet d’apporter une expertise technique solide à mes fonctions de chargé de relations publiques.
-            </p>
-            <p className='"border border-purple/40"'>
-              <strong>Accompagnement personnalisé :</strong> J'accompagne chaque client dans la définition de sa stratégie de communication et de maintenance, en proposant des solutions sur mesure adaptées à leurs besoins spécifiques et à leur secteur d’activité.
-            </p>
-            <p className='"border border-purple/40"'>
-              <strong>Engagement qualité :</strong> Je respecte les délais et les budgets, tout en assurant une communication transparente et régulière avec mes clients pour garantir leur satisfaction à chaque étape du projet.
-            </p>
-            <p>
-              <strong>Contactez-moi</strong> pour un devis gratuit, une démonstration, ou un rendez-vous dans nos bureaux à Kinshasa. Votre transformation digitale commence ici !
-            </p>
-          </motion.div>
+          {/* Colonne Droite : Vision du Groupe */}
+          <div className="lg:col-span-8">
+            <motion.div variants={itemVariants}>
+              <h2 className="text-4xl md:text-6xl font-bold text-slate-900 dark:text-white mb-6 tracking-tight leading-none">
+                Racines Fortes, <br />
+                <span className="text-blue-700">L'adaptabilité au service de l'Excellence</span>
+              </h2>
+              <p className="text-slate-600 dark:text-slate-400 text-lg leading-relaxed mb-10 text-justify">
+                {about || "CORDIALIS GROUPS sarl est un consortium multiservices dédié au développement stratégique en République Démocratique du Congo. Nous combinons expertise locale et standards globaux pour offrir des solutions innovantes dans l'administration des systèmes et l'ingénierie d'affaires."}
+              </p>
+            </motion.div>
+
+            {/* Grid des Pôles d'Expertise */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {details.map((item, index) => (
+                <motion.div 
+                  key={index}
+                  variants={itemVariants}
+                  className="p-6 bg-white dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800 rounded-2xl hover:border-blue-600/50 hover:shadow-xl transition-all duration-300 group"
+                >
+                  <div className="text-blue-700 text-3xl mb-4 group-hover:scale-110 transition-transform">{item.icon}</div>
+                  <h4 className="text-slate-900 dark:text-white font-bold text-lg mb-2 tracking-tight">{item.title}</h4>
+                  <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">{item.text}</p>
+                </motion.div>
+              ))}
+            </div>
+
+            {/* Quote / Vision */}
+            <motion.div 
+              variants={itemVariants}
+              className="mt-12 p-8 bg-blue-50 dark:bg-slate-900 border-l-4 border-blue-700 rounded-r-3xl"
+            >
+              <h5 className="text-blue-700 font-bold uppercase text-xs mb-2 tracking-widest italic">Notre philosophie</h5>
+              <p className="text-slate-800 dark:text-slate-200 text-xl font-medium italic">
+                Comme un arbre...
+              </p>
+              <p className="text-slate-800 dark:text-slate-200 text-xl font-medium italic">
+                "Notre entreprise s'appuie sur des racines solides pour s'élever durablement vers l'avenir. Nous transformons la complexité en opportunités, et les défis en réalisations tangibles."
+              </p>
+            </motion.div>
+          </div>
         </div>
       </motion.section>
-      <GoogleMapsSection />
-    </>
+      
+      <div className="border-t border-slate-200 dark:border-slate-900">
+        <GoogleMapsSection />
+      </div>
+    </div>
   );
 }

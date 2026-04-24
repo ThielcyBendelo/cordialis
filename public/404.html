@@ -1,39 +1,112 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>404 - Page non trouvée</title>
-    <style>
-      body {
-        background: #18181b;
-        color: #fff;
-        font-family: Arial, sans-serif;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        height: 100vh;
-        margin: 0;
-      }
-      h1 {
-        font-size: 4rem;
-        color: #a21caf;
-      }
-      p {
-        font-size: 1.5rem;
-        margin-top: 1rem;
-      }
-      a {
-        color: #38bdf8;
-        text-decoration: underline;
-        margin-top: 2rem;
-      }
-    </style>
-  </head>
-  <body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>404 - Page Introuvable</title>
+  <style>
+    :root {
+      --bg-color: #09090b;
+      --accent-blue: #2563eb;
+      --text-main: #ffffff;
+      --text-muted: #a1a1aa;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      overflow: hidden;
+    }
+
+    /* Effets de lumière en arrière-plan */
+    .glow {
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(37, 99, 235, 0.15) 0%, transparent 70%);
+      border-radius: 50%;
+      filter: blur(60px);
+      z-index: 0;
+    }
+
+    .container {
+      text-align: center;
+      z-index: 1;
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: clamp(8rem, 20vw, 12rem);
+      font-weight: 900;
+      margin: 0;
+      line-height: 1;
+      background: linear-gradient(180deg, #fff 30%, rgba(255,255,255,0.1) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: -0.05em;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      margin-top: -20px;
+      color: var(--accent-blue);
+    }
+
+    p {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      max-width: 400px;
+      margin: 20px auto 40px;
+      line-height: 1.6;
+    }
+
+    .btn {
+      display: inline-block;
+      background: var(--accent-blue);
+      color: white;
+      text-decoration: none;
+      padding: 16px 32px;
+      border-radius: 50px;
+      font-weight: 800;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2);
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 30px rgba(37, 99, 235, 0.4);
+      background: #3b82f6;
+    }
+
+    /* Animation simple */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .container {
+      animation: fadeIn 0.8s ease-out;
+    }
+  </style>
+</head>
+<body>
+  <div class="glow"></div>
+  
+  <div class="container">
     <h1>404</h1>
-    <p>Oups, cette page n'existe pas ou a été déplacée.</p>
-    <a href="/">Retour à l'accueil</a>
-  </body>
+    <h2>Page Introuvable</h2>
+    <p>Désolé, la page que vous recherchez semble avoir disparu dans le cloud.</p>
+    <a href="/" class="btn">RETOUR À L'ACCUEIL</a>
+  </div>
+</body>
 </html>

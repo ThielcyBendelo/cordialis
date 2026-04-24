@@ -1,240 +1,253 @@
+import { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
+import { 
+  FaBuilding, FaCheckCircle, FaGlobe, FaTree, FaLayerGroup, 
+  FaPalette, FaFont, FaShapes, FaCheckDouble 
+} from 'react-icons/fa';
 import useParallax from '../hooks/useParallax';
 import useIntersectionObserver from '../hooks/useIntersectionObserver';
 
-import LazyImage from './LazyImage';
-import { useEffect, useState } from 'react';
-import notificationService from '../services/notificationService';
-import { profile1Image } from '../assets/assets.js';
-// eslint-disable-next-line no-unused-vars
-import { motion, AnimatePresence } from 'framer-motion';
-import AnimatedSection from './AnimatedSection';
-import { useNavigate } from 'react-router-dom';
+
 export default function Hero() {
   const scrollY = useParallax();
   const [elementRef] = useIntersectionObserver();
   const navigate = useNavigate();
 
-  // Tableau des backgrounds
-  const backgrounds = [
-    '/background7.png',
-    '/background8.png',
-    '/background9.jpeg',
-  ];
+  const backgrounds = ['/background7.png', '/background8.png', '/background9.jpeg'];
   const [bgIndex, setBgIndex] = useState(0);
 
-  // Slider automatique
   useEffect(() => {
     const timer = setInterval(() => {
       setBgIndex((prev) => (prev + 1) % backgrounds.length);
-    }, 4000); // Change toutes les 4 secondes
+    }, 5000);
     return () => clearInterval(timer);
   }, [backgrounds.length]);
 
-  // Notification de bienvenue après un délai
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      notificationService.welcome();
-    }, 2000);
-    return () => clearTimeout(timer);
-  }, []);
+  // Données pour les 6 sections de charte graphique
+  const identitySections = [
+    {
+      title: "UN ARBRE POUR EMBLÈME",
+      subtitle: "INTRODUCTION",
+      icon: <FaTree />,
+      content: "Cette charte graphique constitue le socle de l'identité visuelle de CORDIALIS GROUPS sarl. Elle définit l'ensemble des règles et usages relatifs à nos éléments graphiques pour garantir une communication claire, cohérente et professionnelle sur tous nos supports. ",
+      content2: "Le symbole central de notre logo, l'arbre, a été choisi pour incarner la philosophie de notre entreprise. Il représente la croissance, la stabilité, l'ancrage dans nos valeurs, mais aussi l'ouverture à l'innovation et l'adapbilité dans un environnement en constante évolution. Comme un arbre, notre entreprise s'appuie sur des racines solides pour s'élever durablement vers l'avenir.",
+      color: "text-emerald-500",
+      bg: "bg-white dark:bg-slate-950"
+    },
+    {
+      title: "LE TRONC DE NOTRE IDENTITÉ VISUELLE",
+      subtitle: "LE LOGO",
+      icon: <FaLayerGroup />,
+      content: "Le logo CORDIALIS GROUPS sarl met en scène un arbre stylisé, représentant :",
+      content2: "- Nos fondations solides (les racines) : valeurs, savoir-faire, culture d'entreprise.",
+      content3: "- Notre développement (le tronc) : force, résilience, croissance maitrisée.",
+      content4: "- Notre capacité d'innovation et de rayonnement (les branches et le feuillage).",
+      color: "text-blue-700",
+      bg: "bg-slate-50 dark:bg-slate-900"
+    },
+    {
+      title: "PALETTE DE COULEURS",
+      subtitle: "NOS TEINTES IDENTITAIRES",
+      icon: <FaPalette />,
+      content: "Notre charte repose sur une séléction de bleus principaux qui traduisent l'essence de notre identité :",
+      content2:"stabilité, vision et sérénité.",
+      color: "text-blue-600",
+      bg: "bg-white dark:bg-slate-950",
+      isPalette: true
+    },
+    {
+      title: "TYPOGRAPHIE",
+      subtitle: "LES LANGAGES STRUCTURE DE NOTRE ENTREPRISE",
+      icon: <FaFont />,
+      content: "Usage de polices Sans-Serif modernes (Inter/Public Sans). Elles reflètent notre approche directe, transparente et technologique.",
+      color: "text-slate-700",
+      bg: "bg-slate-50 dark:bg-slate-900"
+    },
+    {
+      title: "UNIVERS GRAPHIQUE",
+      subtitle: "NOTRE IMAGE DE MARQUE",
+      icon: <FaShapes />,
+      content: "Style visuel",
+      content2: "- Epuré, authentique, inspiré de la nature",
+      content3: "Iconographie",
+      content4: "- Icones claires et cohérentes, idéalement en lien avec l'environnement, l'innovation, l'humain",
+      content5: "Photographies",
+      content6: "- Lumière naturelle, mise en scène réalistes",
+      content7: "- Valoriser les personnes, les lieux et les gestes en phase avec nos valeurs",
+      color: "text-blue-500",
+      bg: "bg-white dark:bg-slate-950"
+    },
+    {
+      title: "RÈGLES D'USAGES",
+      subtitle: "CONFORMITÉ",
+      icon: <FaCheckDouble />,
+      content: "Respect des zones d'exclusion et interdiction de déformer le logo pour garantir l'impact de CORDIALIS GROUPS partout.",
+      color: "text-blue-800",
+      bg: "bg-slate-900 text-white"
+    }
+  ];
 
   return (
-    <section
-      ref={elementRef}
-      id="home"
-      className="relative min-h-screen flex flex-col justify-center items-center text-center px-4 pt-20 overflow-hidden"
+    <div className="w-full">
+      {/* --- SECTION HERO --- */}
+      <section ref={elementRef} className="relative min-h-screen flex items-center justify-center overflow-hidden bg-slate-950">
+        
+        {/* Background avec Overlay de grain (Texture) */}
+        <div className="absolute inset-0 z-0 opacity-20 pointer-events-none bg-[url('https://vercel.app')]"></div>
+
+        <div
+          className="absolute inset-0 z-0 transition-all duration-1000"
+          style={{
+            backgroundImage: `url(${backgrounds[bgIndex]})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            filter: 'brightness(0.25) saturate(1.2)',
+            transform: `translateY(${scrollY * 0.2}px)`,
+          }}
+        />
+     
+        <div 
+  initial={{ opacity: 0, y: 20 }} 
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.8, ease: "easeOut" }}
+  style={{ opacity: 1, display: 'block' }} // Sécurité CSS
+  className="max-w-6xl mx-auto text-center px-4"
+>
+
+  {/* Badge supérieur affiné */}
+  <div className="flex justify-center mb-8">
+    <div className="px-5 py-1.5 bg-blue-500/10 backdrop-blur-md border border-blue-500/20 rounded-full text-blue-400 text-xs font-black uppercase tracking-[0.3em]">
+      Votre partenaire intégré
+    </div>
+  </div>
+
+  {/* Titre avec typographie plus dynamique */}
+  <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-white mb-8 tracking-tighter leading-[0.95]">
+    Concrétisons vos projets avec une <br className="hidden md:block" />
+    <span className="text-transparent bg-clip-text bg-gradient-to-br from-blue-400 via-blue-600 to-indigo-500"> 
+      vision globale.
+    </span>
+  </h1>
+
+  {/* Paragraphe avec meilleur contraste et largeur limitée */}
+  <div className="max-w-3xl mx-auto mb-12">
+    <p className="text-lg md:text-xl text-slate-300 font-light leading-relaxed">
+      <span className="text-blue-400 font-semibold italic">"</span>
+      Cordialis Groups intervient à l'intersection de la finance, de l'industrie et de l'immobilier pour transformer la complexité en opportunités.
+      <span className="text-blue-400 font-semibold italic">"</span>
+    </p>
+  </div>
+
+  {/* Boutons avec effets de survol plus doux */}
+  <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+    <button 
+      onClick={() => navigate('/services')} 
+      className="group relative w-72 py-4 bg-blue-600 text-white font-bold rounded-full overflow-hidden transition-all hover:shadow-[0_0_30px_rgba(37,99,235,0.4)] active:scale-95"
     >
-      {/* Background image slider */}
-      <div
-        className="absolute inset-0 w-full h-full transition-all duration-1000"
-        style={{
-          backgroundImage: `url(${backgrounds[bgIndex]})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat',
-          filter: 'brightness(0.3)',
-          transform: `translateY(${scrollY * 0.5}px)`,
-        }}
-      />
+      <span className="relative z-10">DÉCOUVRIR NOS EXPERTISES</span>
+      <div className="absolute inset-0 bg-gradient-to-r from-blue-700 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity" />
+    </button>
+    
+    <button 
+      onClick={() => navigate('/contact')} 
+      className="w-72 py-4 border border-white/20 hover:border-white/40 text-white font-bold rounded-full backdrop-blur-sm transition-all hover:bg-white/5 active:scale-95"
+    >
+      NOUS CONTACTER
+    </button>
+  </div>
+</div>
 
-      {/* Gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-dark-100/90 to-dark-100/70 z-10" />
+     
 
-      {/* Particules flottantes animées */}
-      <div className="absolute inset-0 z-15 pointer-events-none">
-        {[...Array(20)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-2 h-2 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full"
-            animate={{
-              x: [0, Math.random() * 100 - 50],
-              y: [0, Math.random() * 100 - 50],
-              opacity: [0, 1, 0],
-              scale: [0, 1, 0],
-            }}
-            transition={{
-              duration: Math.random() * 3 + 2,
-              repeat: Infinity,
-              delay: Math.random() * 2,
-            }}
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-            }}
-          />
-        ))}
-      </div>
+        {/* Indicateur de Scroll Animé */}
+        <motion.div 
+          animate={{ y: [0, 10, 0] }} 
+          transition={{ duration: 2, repeat: Infinity }}
+          className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2 opacity-50"
+        >
+          <span className="text-[10px] text-white font-bold uppercase tracking-widest">Explorer</span>
+          <div className="w-1 h-12 bg-gradient-to-b from-blue-600 to-transparent rounded-full" />
+        </motion.div>
+      </section>
 
-      <div className="relative z-20">
-        {/* Profile Image avec animation sophistiquée */}
-        <AnimatedSection variant="scaleIn" delay={0.2}>
-          <div className="mb-8 flex justify-center">
-            <motion.div
-              whileHover={{
-                scale: 1.1,
-                rotate: 5,
-                transition: { type: 'spring', stiffness: 300 },
-              }}
-              className="relative"
-            >
-              <LazyImage
-                src={profile1Image}
-                alt="Louiscar Ingeba"
-                className="w-48 h-48 md:w-62 md:h-62 rounded-full object-cover border-4 border-purple shadow-neon-purple relative z-10"
-                 style={{ objectPosition: 'center 10%' }}
-                priority={true}
-                placeholder={
-                  <div className="w-48 h-48 md:w-64 md:h-64 rounded-full bg-gradient-to-r from-purple to-pink animate-pulse border-4 border-purple" />
-                }
-              />
-              {/* Cercle animé autour de la photo */}
-              <motion.div
-                className="absolute inset-0 rounded-full border-2 border-gradient-to-r from-blue-400 to-purple-500"
-                animate={{ rotate: 360 }}
-                transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
-              />
-              <motion.div
-                className="absolute inset-[-8px] rounded-full border border-purple-400/30"
-                animate={{ rotate: -360 }}
-                transition={{ duration: 15, repeat: Infinity, ease: 'linear' }}
-              />
-            </motion.div>
+
+      {/* --- LES 6 SECTIONS DE CHARTE --- */}
+      
+        {identitySections.map((section, idx) => (
+  <section key={idx} className={`py-24 px-6 ${section.bg} transition-colors duration-500`}>
+    <div className={`max-w-6xl mx-auto flex flex-col ${idx % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} items-center gap-16`}>
+      
+      {/* Visualisation Icone */}
+      <motion.div 
+        initial={{ opacity: 0, x: idx % 2 === 0 ? -50 : 50 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true }}
+        className="relative group flex-shrink-0"
+      >
+        <div className={`absolute -inset-4 rounded-[2.5rem] opacity-20 group-hover:opacity-40 transition duration-500 blur-xl ${section.color.replace('text', 'bg')}`}></div>
+        <div className={`relative text-7xl p-10 rounded-[2.5rem] bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 shadow-2xl ${section.color}`}>
+          {section.icon}
+        </div>
+      </motion.div>
+      
+      {/* Contenu Texte */}
+      <div className="flex-1 text-center md:text-left">
+        <h4 className="text-blue-700 dark:text-blue-500 font-black tracking-[0.3em] text-xs mb-3 uppercase">
+          {section.subtitle}
+        </h4>
+        <h2 className="text-3xl md:text-4xl font-bold mb-6 text-slate-900 dark:text-white leading-tight uppercase">
+          {section.title}
+        </h2>
+        
+        {/* Affichage intelligent des paragraphes */}
+        <div className="space-y-4 mb-10">
+          {[section.content, section.content2, section.content3, section.content4, section.content5, section.content6, section.content7].map((text, pIdx) => (
+            text && (
+              <p key={pIdx} className="text-slate-600 dark:text-slate-400 text-lg leading-relaxed">
+                {text}
+              </p>
+            )
+          ))}
+        </div>
+
+        {/* Cas particulier Palette */}
+        {section.isPalette && (
+          <div className="flex gap-4 mb-10 justify-center md:justify-start">
+            <div className="group flex flex-col items-center">
+              <div className="w-12 h-12 rounded-full bg-[#0f172a] border-4 border-white shadow-lg mb-2" />
+              <span className="text-[10px] font-bold text-slate-400">Nuit</span>
+            </div>
+            <div className="group flex flex-col items-center">
+              <div className="w-12 h-12 rounded-full bg-[#1d4ed8] border-4 border-white shadow-lg mb-2" />
+              <span className="text-[10px] font-bold text-slate-400">Royal</span>
+            </div>
+            <div className="group flex flex-col items-center">
+              <div className="w-12 h-12 rounded-full bg-[#94a3b8] border-4 border-white shadow-lg mb-2" />
+              <span className="text-[10px] font-bold text-slate-400">Gris</span>
+            </div>
           </div>
-        </AnimatedSection>
+        )}
 
-        {/* Titre d'accueil avec animations staggered */}
-        <AnimatedSection variant="slideUp" delay={0.4}>
-          <div className="mb-8 text-center">
-            <motion.h2
-              className="text-2xl md:text-4xl font-bold mb-3 bg-gradient-to-r from-red-500 to-red-300 to-red-200 text-transparent bg-clip-text"
-              animate={{
-                backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
-              }}
-              transition={{
-                duration: 3,
-                repeat: Infinity,
-                ease: 'linear',
-              }}
-              style={{ backgroundSize: '200% 200%' }}
-            >
-              Louiscar Ingeba
-            </motion.h2>
-
-            <motion.p
-              className="text-lg md:text-2xl text-red-700 to-red-500 to-red-300 mb-5 font-medium bg-gradient-to-r from-red-400 to-purple-500 text-transparent bg-clip-text"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.6, duration: 0.8 }}
-            >
-              Chargé Relations Publiques & Maintenance Système d'une agence de Développement informatiques                       <span>"MUAMOKEL AGENCY"</span> & Entrpreneur.
-            </motion.p>
-
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.8, duration: 0.8, type: 'spring' }}
-            >
-              <motion.p
-                className="text-xl md:text-2xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-purple-500 mb-4"
-                whileHover={{ scale: 1.05 }}
-                transition={{ type: 'spring', stiffness: 300 }}
-              >
-                Spécialisé en gestion de projets et support technique.
-
-              </motion.p>
-            </motion.div>
+        {/* Bouton En Savoir Plus */}
+        <button 
+          onClick={() => navigate(`/services/${section.id || idx}`)}
+          className="group flex items-center gap-3 px-8 py-3.5 bg-blue-700 hover:bg-blue-800 text-white font-bold rounded-xl transition-all shadow-lg shadow-blue-700/20 active:scale-95 mx-auto md:mx-0"
+        >
+          EN SAVOIR PLUS
+          <div className="w-6 h-6 bg-white/20 rounded-full flex items-center justify-center group-hover:translate-x-1 transition-transform">
+             <span className="text-xs">→</span>
           </div>
-        </AnimatedSection>
-
-        {/* Boutons avec animations micro-interactions */}
-        <AnimatedSection variant="slideUp" delay={1.0}>
-          <motion.div
-            className="flex gap-4 justify-center"
-            variants={{
-              hidden: {},
-              visible: {
-                transition: {
-                  staggerChildren: 0.2,
-                },
-              },
-            }}
-            initial="hidden"
-            animate="visible"
-          >
-            <motion.button
-              type="button"
-              onClick={() => navigate('/contact')}
-              className="group relative px-8 py-3 bg-gradient-to-r from-red-700 to-red-500 to-red-300 to-pink text-white rounded-lg overflow-hidden"
-              variants={{
-                hidden: { opacity: 0, y: 20 },
-                visible: { opacity: 1, y: 0 },
-              }}
-              whileHover={{
-                scale: 1.05,
-                boxShadow: '0 20px 40px rgba(251, 251, 252, 0.2)',
-              }}
-              whileTap={{ scale: 0.98 }}
-            >
-              <span className="relative z-10 font-semibold">Me contacter</span>
-              <motion.div
-                className="absolute inset-0 bg-gradient-to-r from-pink-500 to-red-500"
-                initial={{ x: '-100%' }}
-                whileHover={{ x: 0 }}
-                transition={{ duration: 0.3 }}
-              />
-            </motion.button>
-
-            <motion.button
-              type="button"
-              onClick={() => navigate('/projects')}
-              className="group relative px-8 py-3 bg-dark-300 text-white rounded-lg border border-purple overflow-hidden"
-              variants={{
-                hidden: { opacity: 0, y: 20 },
-                visible: { opacity: 1, y: 0 },
-              }}
-              whileHover={{
-                scale: 1.05,
-                boxShadow: '0 20px 40px rgba(255, 17, 17, 0.93)',
-              }}
-              whileTap={{ scale: 0.98 }}
-            >
-              <span className="relative z-10 font-semibold">Projets</span>
-              <motion.div
-                className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600"
-                initial={{ scale: 0 }}
-                whileHover={{ scale: 1 }}
-                transition={{ duration: 0.3 }}
-                style={{ originX: 0.5, originY: 0.5 }}
-              />
-            </motion.button>
-          </motion.div>
-        </AnimatedSection>
+        </button>
       </div>
 
-      {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20">
-        <div className="animate-bounce w-6 h-6 border-2 border-purple rounded-full"></div>
+      {/* Numéro de section en arrière-plan */}
+      <div className="absolute right-10 bottom-0 text-9xl font-black opacity-5 select-none pointer-events-none hidden lg:block dark:text-white">
+        0{idx + 1}
       </div>
-    </section>
+    </div>
+  </section>
+))}
+      </div>
   );
 }

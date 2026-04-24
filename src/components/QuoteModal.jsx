@@ -2,61 +2,37 @@ import React, { useState, useRef, useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import emailService from '../services/emailService';
 import { 
-  FaUser, 
-  FaEnvelope, 
-  FaPhone, 
-  FaBuilding, 
-  FaBriefcase, 
-  FaGlobe, 
-  FaTools, 
-  FaClock, 
-  FaPaperPlane,
-  FaTimes
+  FaUser, FaEnvelope, FaPhone, FaBuilding, 
+  FaTools, FaClock, FaPaperPlane, FaTimes, FaShieldAlt, FaLink
 } from 'react-icons/fa';
 
-
 const SERVICES = [
-  { value: 'Gestion de image de marque', label: 'Gestion de l\'image de marque' },
-  { value: 'Maintien en Condition Opérationnelle (MCO)', label: 'Maintien en Condition Opérationnelle (MCO)' },
-  { value: 'Interface Client-Technique', label: 'Interface Client-Technique' },
-  { value: 'Support & Continuité de Service', label: 'Support & Continuité de Service' },
+  { value: 'MCO & Surveillance Système', label: 'Maintien en Condition Opérationnelle (MCO)' },
+  { value: 'Cyber-Défense & Continuité', label: 'Cyber-Défense & Continuité (PRA)' },
+  { value: 'Interface Technique & Agile', label: 'Interface Client-Technique' },
+  { value: 'E-Réputation & Gestion de Crise', label: 'E-Réputation & Gestion de Crise' },
 ];
 
 const TIMELINES = [
-  { value: 'urgent', label: "Urgent (moins d'une semaine)" },
-  { value: '1-2-semaines', label: '1-2 semaines' },
-  { value: '1-2-mois', label: '1-2 mois' },
-  { value: '3-6-mois', label: '3-6 mois' },
-  { value: 'flexible', label: 'Flexible' },
+  { value: 'urgent', label: "IMMÉDIAT (Alerte Sécurité)" },
+  { value: '1-2-semaines', label: '1-2 semaines (Audit)' },
+  { value: '1-2-mois', label: '1-2 mois (Projet)' },
+  { value: 'flexible', label: 'Planification Flexible' },
 ];
 
 const initialState = {
-  name: '',
-  email: '',
-  phone: '',
-  company: '',
-  job: '',
-  sector: '',
-  website: '',
-  projectType: '',
-  budget: '',
-  timeline: '',
-  message: '',
+  name: '', email: '', phone: '', company: '',
+  website: '', projectType: '', timeline: '', message: '',
 };
 
 const QuoteModal = ({ isOpen, onClose, defaultService }) => {
   const [formData, setFormData] = useState({ ...initialState, projectType: defaultService || '' });
-  const [files, setFiles] = useState([]);
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState(null);
   const [errors, setErrors] = useState({});
 
-  React.useEffect(() => {
-    if (isOpen) {
-      setFormData({ ...initialState, projectType: defaultService || '' });
-      setFiles([]);
-      setResult(null);
-    }
+  useEffect(() => {
+    if (isOpen) setFormData({ ...initialState, projectType: defaultService || '' });
   }, [isOpen, defaultService]);
 
   const handleChange = (e) => {
@@ -64,17 +40,12 @@ const QuoteModal = ({ isOpen, onClose, defaultService }) => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleFileChange = (e) => {
-    setFiles(Array.from(e.target.files));
-  };
-
   const validate = () => {
     const newErrors = {};
-    if (!formData.name.trim()) newErrors.name = 'Nom requis';
-    if (!formData.email.trim() || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(formData.email)) newErrors.email = 'Email valide requis';
-    if (!formData.projectType) newErrors.projectType = 'Service requis';
-    if (!formData.timeline) newErrors.timeline = 'Délai requis';
-    if (formData.website && !/^https?:\/\/.+\..+/.test(formData.website)) newErrors.website = 'URL valide requise';
+    if (!formData.name.trim()) newErrors.name = 'Identité requise';
+    if (!formData.email.trim() || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(formData.email)) newErrors.email = 'Email non conforme';
+    if (!formData.projectType) newErrors.projectType = 'Sélectionnez un protocole';
+    if (!formData.timeline) newErrors.timeline = 'Échéance requise';
     return newErrors;
   };
 
@@ -83,197 +54,124 @@ const QuoteModal = ({ isOpen, onClose, defaultService }) => {
     const validationErrors = validate();
     setErrors(validationErrors);
     if (Object.keys(validationErrors).length > 0) return;
+    
     setLoading(true);
-    setResult(null);
     try {
-      const res = await emailService.sendQuoteRequest(formData, files);
+      const res = await emailService.sendQuoteRequest(formData);
       setResult(res);
-      if (res.success) setFormData({ ...initialState, projectType: defaultService || '' });
+      if (res.success) setTimeout(onClose, 2000);
     } catch {
-      setResult({ success: false, message: "Erreur d'envoi." });
+      setResult({ success: false, message: "Échec de la transmission sécurisée." });
     }
     setLoading(false);
-  };
-
-
-  // Focus trap pour accessibilité
-  const modalRef = useRef(null);
-  const firstInputRef = useRef(null);
-  useEffect(() => {
-    if (isOpen && firstInputRef.current) {
-      firstInputRef.current.focus();
-    }
-    // Focus trap
-    const handleTab = (e) => {
-      if (!modalRef.current) return;
-      const focusable = modalRef.current.querySelectorAll('input, select, textarea, button, [tabindex]:not([tabindex="-1"])');
-      const first = focusable[0];
-      const last = focusable[focusable.length - 1];
-      if (e.key === 'Tab') {
-        if (e.shiftKey && document.activeElement === first) {
-          e.preventDefault();
-          last.focus();
-        } else if (!e.shiftKey && document.activeElement === last) {
-          e.preventDefault();
-          first.focus();
-        }
-      }
-      if (e.key === 'Escape') {
-        onClose();
-      }
-    };
-    if (isOpen) {
-      document.addEventListener('keydown', handleTab);
-    }
-    return () => {
-      document.removeEventListener('keydown', handleTab);
-    };
-  }, [isOpen, onClose]);
-
-  // Gestion fermeture par clic sur overlay
-  const handleOverlayClick = (e) => {
-    if (e.target === e.currentTarget) {
-      onClose();
-    }
   };
 
   return (
     <AnimatePresence>
       {isOpen && (
         <motion.div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          onClick={handleOverlayClick}
-          aria-modal="true"
-          role="dialog"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/80 backdrop-blur-sm p-4"
+          initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+          onClick={(e) => e.target === e.currentTarget && onClose()}
         >
           <motion.div
-            ref={modalRef}
-            className="bg-white rounded-lg shadow-xl p-6 w-full max-w-lg relative overflow-y-auto max-h-[90vh] sm:max-w-md sm:p-4"
-            initial={{ scale: 0.8, y: 60, opacity: 0 }}
-            animate={{ scale: 1, y: 0, opacity: 1, transition: { type: 'spring', stiffness: 300, damping: 30 } }}
-            exit={{ scale: 0.8, y: 60, opacity: 0, transition: { duration: 0.2 } }}
-            tabIndex={-1}
+            className="bg-slate-900 border border-slate-800 rounded-3xl shadow-2xl w-full max-w-xl relative overflow-hidden"
+            initial={{ scale: 0.9, y: 20 }} animate={{ scale: 1, y: 0 }} exit={{ scale: 0.9, y: 20 }}
           >
-            
-            {/* Bouton fermer avec icône */}
-<button
-  className="absolute top-4 right-4 text-gray-400 hover:text-red-500 transition-colors"
-  onClick={onClose}
->
-  <FaTimes size={20} />
-</button>
+            {/* Header avec indicateur de sécurité */}
+            <div className="bg-red-600 p-4 flex items-center justify-between">
+              <div className="flex items-center gap-2 text-white">
+                <FaShieldAlt className="animate-pulse" />
+                <span className="text-xs font-black uppercase tracking-widest">Demande d'Intervention Sécurisée</span>
+              </div>
+              <button onClick={onClose} className="text-white/80 hover:text-white transition-colors">
+                <FaTimes size={20} />
+              </button>
+            </div>
 
-<h2 className="text-2xl font-bold mb-2 text-red-600 text-center">Demander un devis</h2>
-<p className="mb-6 text-gray-500 text-sm text-center px-4">Recevez une proposition personnalisée pour vos projets informatiques et communication.</p>
+            <div className="p-8 max-h-[80vh] overflow-y-auto">
+              <form onSubmit={handleSubmit} className="space-y-5">
+                
+                {/* Identité */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label className="text-[10px] font-black text-red-500 uppercase ml-1">Nom / Identifiant</label>
+                    <div className="relative mt-1">
+                      <FaUser className="absolute left-3 top-3 text-slate-500" />
+                      <input name="name" type="text" required value={formData.name} onChange={handleChange}
+                        className="w-full bg-slate-950 border border-slate-800 rounded-xl pl-10 pr-4 py-2.5 text-white focus:border-red-600 transition-all outline-none"
+                        placeholder="Agent/Client Name" />
+                    </div>
+                  </div>
+                  <div>
+                    <label className="text-[10px] font-black text-red-500 uppercase ml-1">Email Canal Sécurisé</label>
+                    <div className="relative mt-1">
+                      <FaEnvelope className="absolute left-3 top-3 text-slate-500" />
+                      <input name="email" type="email" required value={formData.email} onChange={handleChange}
+                        className="w-full bg-slate-950 border border-slate-800 rounded-xl pl-10 pr-4 py-2.5 text-white focus:border-red-600 transition-all outline-none"
+                        placeholder="contact@agency.com" />
+                    </div>
+                  </div>
+                </div>
 
-<form onSubmit={handleSubmit} className="space-y-4">
-  {/* NOM */}
-  <div>
-    <label className="block text-xs font-bold uppercase text-gray-500 mb-1 ml-1">Nom Complet *</label>
-    <div className="relative">
-      <FaUser className="absolute left-3 top-3 text-red-400" />
-      <input 
-        ref={firstInputRef} 
-        type="text" 
-        name="name" 
-        required 
-        value={formData.name} 
-        onChange={handleChange} 
-        className={`w-full bg-gray-50 border rounded-xl pl-10 pr-4 py-2.5 focus:ring-2 transition-all ${errors.name ? 'border-red-500 focus:ring-red-200' : 'border-gray-200 focus:ring-red-400'}`} 
-        placeholder="Louiscar Ingeba"
-      />
-    </div>
-  </div>
+                {/* Société & Site */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="relative">
+                    <FaBuilding className="absolute left-3 top-3 text-slate-500" />
+                    <input name="company" placeholder="Société / Agence" value={formData.company} onChange={handleChange}
+                      className="w-full bg-slate-950 border border-slate-800 rounded-xl pl-10 pr-4 py-2.5 text-white outline-none" />
+                  </div>
+                  <div className="relative">
+                    <FaLink className="absolute left-3 top-3 text-slate-500" />
+                    <input name="website" placeholder="URL Site Web (si existant)" value={formData.website} onChange={handleChange}
+                      className="w-full bg-slate-950 border border-slate-800 rounded-xl pl-10 pr-4 py-2.5 text-white outline-none" />
+                  </div>
+                </div>
 
-  {/* EMAIL */}
-  <div>
-    <label className="block text-xs font-bold uppercase text-gray-500 mb-1 ml-1">Email Professionnel *</label>
-    <div className="relative">
-      <FaEnvelope className="absolute left-3 top-3 text-red-400" />
-      <input 
-        type="email" 
-        name="email" 
-        required 
-        value={formData.email} 
-        onChange={handleChange} 
-        className={`w-full bg-gray-50 border rounded-xl pl-10 pr-4 py-2.5 focus:ring-2 transition-all ${errors.email ? 'border-red-500 focus:ring-red-200' : 'border-gray-200 focus:ring-red-400'}`}
-        placeholder="exemple@domaine.com"
-      />
-    </div>
-  </div>
+                {/* Service Selection */}
+                <div>
+                  <label className="text-[10px] font-black text-red-500 uppercase ml-1">Protocole d'intervention souhaité</label>
+                  <div className="relative mt-1">
+                    <FaTools className="absolute left-3 top-3 text-slate-500" />
+                    <select name="projectType" value={formData.projectType} onChange={handleChange}
+                      className="w-full bg-slate-950 border border-slate-800 rounded-xl pl-10 pr-4 py-2.5 text-white appearance-none focus:border-red-600 outline-none">
+                      <option value="">Sélectionner un service...</option>
+                      {SERVICES.map(s => <option key={s.value} value={s.value}>{s.label}</option>)}
+                    </select>
+                  </div>
+                </div>
 
-  <div className="grid grid-cols-2 gap-4">
-    {/* TELEPHONE */}
-    <div>
-      <label className="block text-xs font-bold uppercase text-gray-500 mb-1 ml-1">Téléphone</label>
-      <div className="relative">
-        <FaPhone className="absolute left-3 top-3 text-red-400" />
-        <input type="tel" name="phone" value={formData.phone} onChange={handleChange} className="w-full bg-gray-50 border border-gray-200 rounded-xl pl-10 pr-4 py-2.5 focus:ring-2 focus:ring-red-400 transition-all" />
-      </div>
-    </div>
-    
-    {/* SOCIÉTÉ */}
-    <div>
-      <label className="block text-xs font-bold uppercase text-gray-500 mb-1 ml-1">Société</label>
-      <div className="relative">
-        <FaBuilding className="absolute left-3 top-3 text-red-400" />
-        <input type="text" name="company" value={formData.company} onChange={handleChange} className="w-full bg-gray-50 border border-gray-200 rounded-xl pl-10 pr-4 py-2.5 focus:ring-2 focus:ring-red-400 transition-all" />
-      </div>
-    </div>
-  </div>
+                {/* Timeline */}
+                <div>
+                  <label className="text-[10px] font-black text-red-500 uppercase ml-1">Échéance de déploiement</label>
+                  <div className="relative mt-1">
+                    <FaClock className="absolute left-3 top-3 text-slate-500" />
+                    <select name="timeline" value={formData.timeline} onChange={handleChange}
+                      className="w-full bg-slate-950 border border-slate-800 rounded-xl pl-10 pr-4 py-2.5 text-white appearance-none focus:border-red-600 outline-none">
+                      <option value="">Niveau d'urgence...</option>
+                      {TIMELINES.map(t => <option key={t.value} value={t.value}>{t.label}</option>)}
+                    </select>
+                  </div>
+                </div>
 
-  {/* SERVICE (SELECT) */}
-  <div>
-    <label className="block text-xs font-bold uppercase text-gray-500 mb-1 ml-1">Service Souhaité *</label>
-    <div className="relative">
-      <FaTools className="absolute left-3 top-3 text-red-400 shadow-sm" />
-      <select 
-        name="projectType" 
-        value={formData.projectType} 
-        onChange={handleChange} 
-        className="w-full bg-gray-50 border border-gray-200 rounded-xl pl-10 pr-4 py-2.5 appearance-none focus:ring-2 focus:ring-red-400"
-      >
-        <option value="">Choisir un service...</option>
-        {SERVICES.map(s => <option key={s.value} value={s.value}>{s.label}</option>)}
-      </select>
-    </div>
-  </div>
+                {/* Message */}
+                <textarea name="message" rows="3" placeholder="Détails techniques du projet ou incidents constatés..." value={formData.message} onChange={handleChange}
+                  className="w-full bg-slate-950 border border-slate-800 rounded-xl p-4 text-white focus:border-red-600 transition-all outline-none resize-none" />
 
-  {/* DÉLAI (SELECT) */}
-  <div>
-    <label className="block text-xs font-bold uppercase text-gray-500 mb-1 ml-1">Délai du projet *</label>
-    <div className="relative">
-      <FaClock className="absolute left-3 top-3 text-red-400" />
-      <select 
-        name="timeline" 
-        value={formData.timeline} 
-        onChange={handleChange} 
-        className="w-full bg-gray-50 border border-gray-200 rounded-xl pl-10 pr-4 py-2.5 appearance-none focus:ring-2 focus:ring-red-400"
-      >
-        <option value="">Sélectionner un délai...</option>
-        {TIMELINES.map(t => <option key={t.value} value={t.value}>{t.label}</option>)}
-      </select>
-    </div>
-  </div>
+                {/* Status Message */}
+                {result && (
+                  <div className={`p-3 rounded-xl text-center text-sm font-bold ${result.success ? 'bg-green-900/20 text-green-500' : 'bg-red-900/20 text-red-500'}`}>
+                    {result.message}
+                  </div>
+                )}
 
-  {/* BOUTON ENVOYER */}
-  <button
-    type="submit"
-    disabled={loading}
-    className="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-3 rounded-xl shadow-lg flex items-center justify-center gap-2 transition-all transform active:scale-95 disabled:opacity-50 mt-4"
-  >
-    {loading ? (
-      <span className="animate-spin border-2 border-white border-t-transparent rounded-full h-5 w-5"></span>
-    ) : (
-      <>
-        <FaPaperPlane /> Envoyer la demande
-      </>
-    )}
-  </button>
-</form>
+                {/* Submit */}
+                <button type="submit" disabled={loading}
+                  className="w-full py-4 bg-red-600 hover:bg-red-700 text-white font-black uppercase tracking-widest rounded-xl transition-all flex items-center justify-center gap-3 disabled:opacity-50">
+                  {loading ? "Chiffrement en cours..." : <><FaPaperPlane /> Envoyer la demande</>}
+                </button>
+              </form>
+            </div>
           </motion.div>
         </motion.div>
       )}

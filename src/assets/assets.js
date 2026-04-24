@@ -6,16 +6,15 @@ export const projet4 = '/images/projet4.jpg';
 export const projet5 = '/images/projet5.webp';
 export const projet6 = '/images/projet6.jpg';
 export const predictiveMaintenance = '/images/predictive-maintenance.png';
-export const profileImage = '/images/louiscar.jpeg';
-export const profile1Image = '/images/louiscar.jpeg';
+export const profileImage = '/images/logo_portrait.png';
+export const profile1Image = '/images/logo_portrait.png';
 export const bgImage = '/images/background.jpg';
 export const programmationImage = '/images/image.programmation2.jpg';
-export const reactLogo = '/images/react.svg';
-export const logoImage = '/images/logolouiscar.jpeg';
-export const logoImages = '/images/logolouiscar.jpeg';
+export const logoImage = '/images/logo_paysage.png';
+export const logoImages = '/images/logo_paysage.png';
 
 export const about =
-  "Expert en relations publiques doté d'une solide expertise en maintenance système, j'assure la synergie entre la performance technique de nos outils et le rayonnement de notre agence. Mon rôle : garantir que nos systèmes ne tombent jamais et que nos partenariats ne cessent de croître.";
+  "Le monde des affaires évolue constamment. Notre force réside dans notre capacité à évoluer avec lui. Voici pourquoi nous sommes le partenaire:";
 
 export const skills = [
   'Négociation',
@@ -43,67 +42,47 @@ export const skills = [
 
 export const experiences = [
   {
-    role: 'Communication & Image',
+    role: 'Agent de Cybersécurité & Infra',
     company: 'Muamokel Agency',
-    year: '2026-Présent',
-    type: 'Stratégie de communication externe',
+    year: '2023 - Présent',
+    type: 'security', // Utilisé pour l'icône de bouclier
     description:
-      "Concevoir et diffuser le narratif de l'agence (expertises en code, nouvelles technologies, transformation digitale) auprès des médias et des partenaires.",
+      'Responsable de la cellule de défense numérique : déploiement de protocoles SSL/TLS, gestion des architectures VPN sécurisées et mise en place de politiques de sauvegarde immuables pour garantir la continuité d\'activité (DRP).',
   },
-
   {
-    role: 'Communication & Image',
+    role: 'Administrateur Systèmes & Cloud',
     company: 'Muamokel Agency',
-    year: '2025-Présent',
-    type: 'Événementiel et Presse ',
+    year: '2025 - Présent',
+    type: 'maintenance', // Utilisé pour l'icône de serveur
     description:
-      "Organiser des webinaires, des conférences ou des lancements de produits informatiques et rédiger des communiqués de presse ciblés.",
+      'Administration avancée d\'infrastructures Cloud (AWS, Azure, O365). Optimisation du parc informatique et supervision du Helpdesk technique pour garantir une haute disponibilité des services de développement.',
   },
-
   {
-    role: 'Communication & Image',
+    role: 'Chargé de Communication de Crise',
     company: 'Muamokel Agency',
-    year: '2025-Présent',
-    type: 'Veille et Gestion de crise',
+    year: '2025 - Présent',
+    type: 'contract', 
     description:
-      " Anticiper les risques de réputation liés à des bugs ou des cyberattaques et mettre en place des plans de communication de crise. ",
-  },
-
-  {
-    role: 'Support & Infrastructure',
-    company: 'Mwamokel Agency',
-    year: '2025-Présent',
-    type: 'Entretien du parc informatique',
-    description:
-      "Installer, configurer et mettre à jour le matériel (serveurs, PC) et les licences logicielles nécessaires au développement.",
+      'Expert en gestion de réputation post-incident : élaboration de stratégies de communication face aux risques cyber et pilotage du narratif technologique de l\'agence auprès des partenaires stratégiques.',
   },
   {
-    role: 'Support & Infrastructure',
-    company: 'Mwamokel Agency',
-    year: '2023-Présent',
-    type: 'Sécurité et Sauvegarde',
+    role: 'Coordonnateur Événementiel Tech',
+    company: 'Muamokel Agency',
+    year: '2025 - Présent',
+    type: 'full-time',
     description:
-      'Mettre en place des solutions de cybersécurité, gérer les VPN, les certificats SSL et assurer la pérennité des données par des sauvegardes régulières.',
+      'Organisation de conférences spécialisées en transformation digitale et gestion des relations presse pour le lancement de solutions logicielles innovantes.',
   },
   {
-    role: 'Support & Infrastructure',
-    company: 'Mwamokel Agency',
-    year: '2025-Présent',
-    type: 'Support technique (Helpdesk)',
+    role: 'Stratège en Image de Marque',
+    company: 'Muamokel Agency',
+    year: '2026 - Présent',
+    type: 'full-time',
     description:
-      "Diagnostiquer et réparer les pannes réseaux ou hardware pour minimiser les interruptions de service.",
-  },
-
- {
-    role: 'Support & Infrastructure',
-    company: 'Mwamokel Agency',
-    year: '2025-Présent',
-    type: 'Gestion des accès Cloud :',
-    description:
-      "Administrer les services Cloud (Office 365, AWS, Azure) pour garantir l'accessibilité des projets n'importe où.",
-  },
-
+      'Définition du positionnement de marque "High-Tech" de l\'agence. Valorisation de l\'expertise en développement et nouvelles technologies sur le marché africain et international.',
+  }
 ];
+
 
 export const projets = [
   {
@@ -207,19 +186,19 @@ export const works = [
 ];
 
 export const contact = [
-  { label: 'Email', link: 'ingebalouiscar@gmail.com' },
+  { label: 'Email', link: 'cordialisgroups@gmail.com' },
   {
     label: 'LinkedIn',
-    link: 'https://linkedin.com/in/louiscar-699734222?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
+    link: 'https://linkedin.com/in/',
   },
   // { label: 'GitHub', link: 'https://github.com/' },
   {
     label: 'Instagram',
-    link: 'https://instagram.com/louiscarfernandez?igsh=MjB3ODdzMDI4dGto',
+    link: 'https://instagram.com/',
   },
   {
     label: 'Facebook',
-    link: 'https://facebook.com/louiscar.fernandez',
+    link: 'https://facebook.com/',
   },
   // {
   //   label: 'WhatsApp',
