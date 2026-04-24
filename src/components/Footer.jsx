@@ -91,20 +91,40 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Barre de conformité - Bottom */}
-        <div className="pt-8 border-t border-slate-200 dark:border-slate-900 flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] tracking-widest font-black uppercase">
-          <p className="text-slate-400 dark:text-slate-600 text-center md:text-left">
-            © {currentYear} <span className="text-blue-700">CORDIALIS GROUPS sarl</span> — Excellence & Intégrité
-          </p>
-          <div className="flex gap-6 text-slate-400 dark:text-slate-600">
-            <span className="flex items-center gap-2">
-              <span className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></span>
-              Systèmes Opérationnels
-            </span>
-            <span className="hover:text-blue-700 cursor-pointer transition-colors">Mentions Légales</span>
-          </div>
-        </div>
+       {/* Barre de conformité - Bottom */}
+<div className="pt-8 border-t border-slate-200 dark:border-slate-900 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] tracking-widest font-black uppercase">
+  
+  {/* Section Logo + Copyright */}
+  <div className="flex flex-col md:flex-row items-center gap-4">
+    {/* Logo CORDIALIS intégré */}
+    <div 
+      className="flex items-center cursor-pointer group"
+      onClick={() => navigate('/')}
+    >
+      <div className="relative h-12 md:h-16 w-auto transition-transform duration-300 group-hover:scale-105 flex items-center">
+        <img 
+          src="/logo_paysage.png" 
+          alt="CORDIALIS GROUPS sarl" 
+          className="h-full w-auto object-contain py-1" 
+        />
       </div>
+    </div>
+
+    <p className="text-slate-400 dark:text-slate-600 text-center md:text-left">
+      © {currentYear} <span className="text-blue-700">CORDIALIS GROUPS sarl. RCCM: CD/KNG/RCCM/25-B-00764.</span> — Excellence & Intégrité
+    </p>
+  </div>
+
+  {/* Status & Links */}
+  <div className="flex gap-6 text-slate-400 dark:text-slate-600">
+    <span className="flex items-center gap-2">
+      <span className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></span>
+      Systèmes Opérationnels
+    </span>
+    <span className="hover:text-blue-700 cursor-pointer transition-colors">Mentions Légales</span>
+  </div>
+</div>
+</div>
     </footer>
   );
 }

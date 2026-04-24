@@ -54,7 +54,7 @@ export default function NavbarSecured() {
   onClick={() => navigate('/')}
 >
   {/* Augmentation de h-14 à h-20 (80px) et md:h-16 à md:h-24 (96px) */}
-  <div className="relative h-20 md:h-24 w-auto transition-transform duration-300 group-hover:scale-105 flex items-center">
+  <div className="relative h-20 md:h-40 w-auto transition-transform duration-300 group-hover:scale-105 flex items-center">
     <img 
       src="/logo_paysage.png" 
       alt="CORDIALIS GROUPS sarl" 
@@ -85,7 +85,7 @@ export default function NavbarSecured() {
               {theme === 'dark' ? <FaSun /> : <FaMoon />}
             </button>
 
-            {isAuthenticated ? (
+            {/* {isAuthenticated ? (
               <div className="flex items-center gap-3 pl-3 border-l border-slate-200 dark:border-slate-800">
                 <div className="hidden sm:block text-right">
                   <p className="text-xs font-bold dark:text-white">{currentUser?.name || 'Utilisateur'}</p>
@@ -105,7 +105,7 @@ export default function NavbarSecured() {
               >
                 Connexion
               </button>
-            )}
+            )} */}
             
             {/* Mobile Toggle */}
             <button className="md:hidden text-2xl text-blue-900 dark:text-white" onClick={() => setIsOpen(!isOpen)}>

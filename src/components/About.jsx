@@ -1,15 +1,16 @@
 import { about, profile1Image as profileImg } from '../assets/assets.js';
 import { motion } from 'framer-motion';
 import { 
-  FaShieldAlt, 
-  FaBuilding, 
-  FaChartLine, 
-  FaCogs, 
+  FaGlobe, 
+  FaUserTie, 
+  FaHandshake, 
   FaMapMarkerAlt, 
-  FaFileDownload,
-  FaHandshake,
-  FaUsers
+  FaBuilding, 
+  FaUsers, 
+  FaChartLine,
+  FaFileDownload 
 } from 'react-icons/fa';
+
 
 import LazyImage from './LazyImage';
 import GoogleMapsSection from './GoogleMapsSection';
@@ -26,23 +27,24 @@ export default function About() {
   };
 
   // Mise à jour pour CORDIALIS GROUPS sarl
-  const details = [
-    { 
-      icon: <FaBuilding />, 
-      title: "Vision 360°", 
-      text: "Une compréhension complète de la chaine de valeur de votre projet." 
-    },
-    { 
-      icon: <FaChartLine />, 
-      title: "Un interlocuteur Unique", 
-      text: "Simplifiez votre gestion grace à notre coordination multidisciplinaire." 
-    },
-    { 
-      icon: <FaUsers />, 
-      title: "Ethique & Professionnalisme", 
-      text: "Un engagement inconditionnel envers l'intégrité et la transparence." 
-    },
-  ];
+ const details = [
+  { 
+    icon: <FaGlobe className="text-blue-500" />, 
+    title: "Vision 360°", 
+    text: "Une compréhension complète de la chaîne de valeur de votre projet." 
+  },
+  { 
+    icon: <FaUserTie className="text-blue-500" />, 
+    title: "Un Interlocuteur Unique", 
+    text: "Simplifiez votre gestion grâce à notre coordination multidisciplinaire." 
+  },
+  { 
+    icon: <FaHandshake className="text-blue-500" />, 
+    title: "Éthique & Professionnalisme", 
+    text: "Un engagement inconditionnel envers l'intégrité et la transparence." 
+  },
+];
+ 
 
   return (
     <div className="bg-slate-50 dark:bg-slate-950 pt-24 min-h-screen transition-colors duration-300">
@@ -72,7 +74,7 @@ export default function About() {
             
             <div className="mt-8 text-center bg-white dark:bg-slate-900/50 p-8 rounded-3xl border border-slate-200 dark:border-slate-800 w-full shadow-lg backdrop-blur-md">
               <h3 className="text-slate-900 dark:text-white font-bold text-2xl mb-1 tracking-tight uppercase">Charte & graphique</h3>
-              <p className="text-blue-700 font-bold text-xs uppercase tracking-[0.2em]">CEO CORDIALIS GROUPS sarl</p>
+              <p className="text-blue-700 font-bold text-xs uppercase tracking-[0.2em]">CORDIALIS GROUPS sarl</p>
               <div className="mt-4 pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-center gap-2 text-slate-500 text-sm">
                 <FaMapMarkerAlt className="text-blue-700" /> Kinshasa, RDC
               </div>

@@ -92,7 +92,7 @@ export default function Contact() {
                 <label className="text-[10px] font-bold text-blue-700 dark:text-blue-400 uppercase tracking-widest ml-1">Adresse de Correspondance</label>
                 <input name="email" type="email" required value={formData.email} onChange={handleChange}
                   className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl px-5 py-4 text-slate-900 dark:text-white focus:ring-2 focus:ring-blue-700/20 outline-none transition-all"
-                  placeholder="votre@entreprise.com" />
+                  placeholder="cordialisgroups@gmail.com" />
               </div>
 
               <div>
