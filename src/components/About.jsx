@@ -47,9 +47,9 @@ export default function About() {
  
 
   return (
-    <div className="bg-slate-50 dark:bg-slate-950 pt-24 min-h-screen transition-colors duration-300">
+    <div className="bg-slate-50 dark:bg-slate-950  min-h-screen transition-colors duration-300">
       <motion.section
-        className="max-w-6xl mx-auto px-6 pb-20"
+        className="max-w-6xl mx-auto px-6 pb-24"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
@@ -73,7 +73,8 @@ export default function About() {
             </div>
             
             <div className="mt-8 text-center bg-white dark:bg-slate-900/50 p-8 rounded-3xl border border-slate-200 dark:border-slate-800 w-full shadow-lg backdrop-blur-md">
-              <h3 className="text-slate-900 dark:text-white font-bold text-2xl mb-1 tracking-tight uppercase">Charte & graphique</h3>
+              <h3 className="text-slate-900 dark:text-white font-bold text-2xl mb-1 tracking-tight uppercase">Racines &
+                 identité</h3>
               <p className="text-blue-700 font-bold text-xs uppercase tracking-[0.2em]">CORDIALIS GROUPS sarl</p>
               <div className="mt-4 pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-center gap-2 text-slate-500 text-sm">
                 <FaMapMarkerAlt className="text-blue-700" /> Kinshasa, RDC

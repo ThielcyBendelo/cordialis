@@ -142,50 +142,77 @@ return (
         transition={{ duration: 1, ease: "easeOut" }}
         className="relative z-10 max-w-6xl mx-auto text-center px-6"
       >
-        {/* Badge */}
-        <div className="flex justify-center mb-10">
-          <div className="px-5 py-15 bg-blue-500/5 backdrop-blur-xl border border-blue-500/20 rounded-full flex items-center gap-3">
-            <span className="w-1.5 h-1.5 bg-blue-500 rounded-full animate-pulse"></span>
-            <span className="text-blue-400 text-[10px] font-black uppercase tracking-[0.4em]">
-              Votre partenaire intégré
-            </span>
-          </div>
-        </div>
 
-        {/* Titre */}
-        <h1 className="text-5xl md:text-7xl lg:text-[90px] font-gray-500 to-vert-400 to-bleu text-white mb-8 tracking-tighter leading-[0.9]">
-          Concrétisons vos projets <br className="hidden lg:block" /> avec une 
-          <span className="text-transparent bg-clip-text bg-gradient-to-br from-blue-400 via-blue-600 to-indigo-500"> 
-            {" "}vision globale.
-          </span>
-        </h1>
+  {/* Badge : Texte plus foncé en mode clair */}
+  <div className="flex justify-center mb-10">
+  <div className="px-5 py-2 bg-white/10 dark:bg-[#73c2fb]/5 backdrop-blur-xl border border-[#73c2fb]/40 dark:border-[#73c2fb]/20 rounded-full flex items-center gap-3 shadow-[0_0_15px_rgba(115,194,251,0.2)]">
+    {/* Point d'animation en Bleu Maya */}
+    <span className="w-1.5 h-1.5 bg-[#73c2fb] rounded-full animate-pulse shadow-[0_0_8px_#73c2fb]"></span>
+    
+    {/* Texte en Blanc (Mode Clair) et Bleu Maya (Mode Sombre) */}
+    <span className="text-white dark:text-[#73c2fb] text-[10px] font-black uppercase tracking-[0.4em]">
+      Votre partenaire intégré
+    </span>
+  </div>
+</div>
 
-        {/* Paragraphe */}
-        <div className="max-w-3xl mx-auto mb-14 relative px-4">
-          <p className="text-lg md:text-2xl text-gray-400 font-light leading-relaxed">
-            <span className="text-white font-serif italic text-4xl mr-2">“</span>
-            Cordialis Groups intervient à l'intersection de la <span className="text-white">finance</span>, de l'<span className="text-white">industrie</span> et de l'<span className="text-white">immobilier</span> pour transformer la complexité en opportunités.
-            <span className="text-blue-500 font-serif italic text-4xl ml-2">”</span>
-          </p>
-        </div>
+
+  <h1 className="text-5xl md:text-7xl lg:text-[90px] font-black text-[#73c2fb] dark:text-white mb-8 tracking-tighter leading-[0.9] drop-shadow-2xl">
+  Concrétisons vos projets <br className="hidden lg:block" /> avec une 
+  <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-[#73c2fb] to-white"> 
+    {" "}vision globale.
+  </span>
+</h1>
+
+
+
+ {/* Paragraphe : Corps en Bleu Maya et Accents en Blanc */}
+<div className="max-w-3xl mx-auto mb-14 relative px-4">
+ <p className="text-lg md:text-2xl text-[#73c2fb] font-semibold leading-relaxed drop-shadow-md text-center">
+  {/* Guillemets en blanc forcé */}
+  <span className="!text-white font-serif italic text-5xl mr-2">“</span>
+  
+  Cordialis Groups intervient à l'intersection de la 
+  <span className="!text-lime-400 font-serif italic tracking-wide"> finance</span>, 
+  de l' <span className="!text-lime-400 font-serif italic tracking-wide">industrie</span> et de l'
+  <span className="!text-lime-400 font-serif italic tracking-wide"> immobilier</span> 
+  pour transformer la complexité en opportunités.
+  
+  <span className="!text-white font-serif italic text-5xl ml-2">”</span>
+</p>
+
+
+
+</div>
+
+
+
 
         {/* Boutons */}
         <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-          <button 
-            onClick={() => navigate('/services')} 
-            className="group relative w-72 py-5 bg-blue-600 text-white font-black rounded-2xl overflow-hidden transition-all hover:shadow-[0_20px_40px_rgba(37,99,235,0.3)] active:scale-95"
-          >
-            <span className="relative z-10 tracking-widest text-xs">DÉCOUVRIR NOS EXPERTISES</span>
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-700 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity" />
-          </button>
-          
-          <button 
-            onClick={() => navigate('/contact')} 
-            className="w-72 py-5 border-2 border-white/10 hover:border-blue-500 text-white font-black rounded-2xl backdrop-blur-md transition-all hover:bg-white/5 active:scale-95 tracking-widest text-xs"
-          >
-            NOUS CONTACTER
-          </button>
-        </div>
+  {/* Bouton Principal - Fond Bleu Maya et Texte Blanc */}
+  <button 
+    onClick={() => navigate('/services')} 
+    className="group relative w-72 py-5 !bg-[#73c2fb] !text-white font-black rounded-2xl overflow-hidden transition-all hover:shadow-[0_20px_40px_rgba(115,194,251,0.4)] active:scale-95 border-none"
+  >
+    <span className="relative z-10 tracking-[0.2em] text-xs">DÉCOUVRIR NOS EXPERTISES</span>
+    {/* Overlay de survol en Vert Citron */}
+    <div className="absolute inset-0 !bg-lime-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+    {/* Texte qui devient noir au survol du vert pour la lisibilité */}
+    <span className="absolute inset-0 flex items-center justify-center z-20 opacity-0 group-hover:opacity-100 !text-slate-900 tracking-[0.2em] text-xs transition-opacity duration-300">
+      DÉCOUVRIR NOS EXPERTISES
+    </span>
+  </button>
+  
+  {/* Bouton Secondaire - Bordure Maya et Texte Vert Citron */}
+  <button 
+    onClick={() => navigate('/contact')} 
+    className="w-72 py-5 border-2 !border-[#73c2fb] !text-lime-400 font-black rounded-2xl backdrop-blur-md transition-all hover:!bg-[#73c2fb] hover:!text-white active:scale-95 tracking-[0.2em] text-xs bg-transparent"
+  >
+    NOUS CONTACTER
+  </button>
+</div>
+
       </motion.div>
 
       {/* Indicateur de Scroll */}
