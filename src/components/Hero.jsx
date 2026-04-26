@@ -149,10 +149,11 @@ return (
     {/* Point d'animation en Bleu Maya */}
     <span className="w-1.5 h-1.5 bg-[#73c2fb] rounded-full animate-pulse shadow-[0_0_8px_#73c2fb]"></span>
     
-    {/* Texte en Blanc (Mode Clair) et Bleu Maya (Mode Sombre) */}
-    <span className="text-white dark:text-[#73c2fb] text-[10px] font-black uppercase tracking-[0.4em]">
-      Votre partenaire intégré
-    </span>
+    <span className="text-blue-500 dark:text-[#73c2fb] text-[10px] font-black uppercase tracking-[0.4em]">
+  Votre partenaire intégré
+</span>
+
+
   </div>
 </div>
 
@@ -170,7 +171,8 @@ return (
 <div className="max-w-3xl mx-auto mb-14 relative px-4">
  <p className="text-lg md:text-2xl text-[#73c2fb] font-semibold leading-relaxed drop-shadow-md text-center">
   {/* Guillemets en blanc forcé */}
-  <span className="!text-white font-serif italic text-5xl mr-2">“</span>
+<span className="text-[#73c2fb] font-serif italic text-5xl mr-2">“</span>
+
   
   Cordialis Groups intervient à l'intersection de la 
   <span className="!text-lime-400 font-serif italic tracking-wide"> finance</span>, 
@@ -178,7 +180,7 @@ return (
   <span className="!text-lime-400 font-serif italic tracking-wide"> immobilier </span> 
   pour transformer la complexité en opportunités.
   
-  <span className="!text-white font-serif italic text-5xl ml-2">”</span>
+  <span className="text-[#73c2fb] font-serif italic text-5xl mr-2">”</span>
 </p>
 
 
