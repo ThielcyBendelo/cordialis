@@ -113,7 +113,7 @@ export default function Hero() {
 return (
   <div className="w-full">
     {/* --- SECTION HERO --- */}
-    <section ref={elementRef} className="relative min-h-screen flex items-center justify-center overflow-hidden bg-slate-950">
+    <section ref={elementRef} className="py-24 px-6 pt-32 relative min-h-screen flex items-center justify-center overflow-hidden bg-slate-950">
       
       {/* Background & Textures */}
       <div className="absolute inset-0 z-0">
@@ -175,7 +175,7 @@ return (
   Cordialis Groups intervient à l'intersection de la 
   <span className="!text-lime-400 font-serif italic tracking-wide"> finance</span>, 
   de l' <span className="!text-lime-400 font-serif italic tracking-wide">industrie</span> et de l'
-  <span className="!text-lime-400 font-serif italic tracking-wide"> immobilier</span> 
+  <span className="!text-lime-400 font-serif italic tracking-wide"> immobilier </span> 
   pour transformer la complexité en opportunités.
   
   <span className="!text-white font-serif italic text-5xl ml-2">”</span>

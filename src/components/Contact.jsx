@@ -36,7 +36,7 @@ export default function Contact() {
     const loadingToast = notificationService.loading('Envoi de votre demande au siège...');
 
     if (!EMAILJS_SERVICE_ID || !EMAILJS_TEMPLATE_ID || !EMAILJS_PUBLIC_KEY) {
-      window.location.href = `mailto:ingebalouiscar@://gmail.com CORDIALIS - ${formData.name}&body=${formData.message}`;
+      window.location.href = `mailto:cordialisgroups@://gmail.com CORDIALIS - ${formData.name}&body=${formData.message}`;
       notificationService.dismiss(loadingToast);
       notificationService.success('Ouverture de votre messagerie...');
       return;
@@ -64,11 +64,11 @@ export default function Contact() {
         
         {/* Header Institutionnel */}
         <div className="text-center mb-16">
-          <div className="flex justify-center mb-4 text-blue-700">
+          <div className="flex justify-center mb-4 text-[#73c2fb]">
             <FaBuilding size={35} className="opacity-80" />
           </div>
           <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white tracking-tight">
-            Contactez le <span className="text-blue-700 text-shadow-sm">Groupe</span>
+            Contactez le <span className="text-[#73c2fb] text-shadow-sm">Groupe</span>
           </h2>
           <div className="h-1.5 w-16 bg-blue-700 mx-auto mt-4 mb-6 rounded-full"></div>
           <p className="text-slate-500 dark:text-slate-400 font-medium">Étude de projet, partenariat stratégique ou demande de cotation.</p>
@@ -92,7 +92,7 @@ export default function Contact() {
                 <label className="text-[10px] font-bold text-blue-700 dark:text-blue-400 uppercase tracking-widest ml-1">Adresse de Correspondance</label>
                 <input name="email" type="email" required value={formData.email} onChange={handleChange}
                   className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl px-5 py-4 text-slate-900 dark:text-white focus:ring-2 focus:ring-blue-700/20 outline-none transition-all"
-                  placeholder="cordialisgroups@gmail.com" />
+                  placeholder="Votre Adresse Email" />
               </div>
 
               <div>
@@ -102,7 +102,7 @@ export default function Contact() {
                   placeholder="Détaillez votre projet ou vos besoins..." />
               </div>
 
-              <button type="submit" className="w-full py-4 bg-blue-700 hover:bg-blue-800 text-white font-bold rounded-xl shadow-lg shadow-blue-700/20 flex items-center justify-center gap-3 transition-all hover:-translate-y-1 active:scale-95">
+              <button type="submit" className="w-full py-4 bg-[#73c2fb] hover:bg-blue-800 text-white font-bold rounded-xl shadow-lg shadow-blue-700/20 flex items-center justify-center gap-3 transition-all hover:-translate-y-1 active:scale-95">
                 <FaPaperPlane className="text-sm" /> 
                 {status.type === 'loading' ? 'Traitement en cours...' : 'Envoyer la demande'}
               </button>
@@ -113,7 +113,7 @@ export default function Contact() {
           <div className="space-y-8">
             <div className="p-8 bg-white dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 rounded-[2rem] shadow-sm">
               <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-8 flex items-center gap-3">
-                <FaUserTie className="text-blue-700" /> Liaisons Directes
+                <FaUserTie className="text-[#73c2fb]" /> Liaisons Directes
               </h3>
               <div className="grid grid-cols-3 gap-5">
                 {contact.map((item) => {
@@ -122,7 +122,7 @@ export default function Contact() {
                   return (
                     <a key={item.label} href={item.link} target="_blank" rel="noopener noreferrer"
                       className="flex flex-col items-center gap-3 p-5 bg-slate-50 dark:bg-slate-950 border border-slate-100 dark:border-slate-800 rounded-2xl hover:border-blue-700 hover:shadow-md transition-all text-slate-400 group">
-                      <Icon size={22} className="group-hover:text-blue-700 group-hover:scale-110 transition-all duration-300" />
+                      <Icon size={22} className="group-hover:text-[#73c2fb] group-hover:scale-110 transition-all duration-300" />
                       <span className="text-[9px] font-black uppercase tracking-tighter text-slate-500">{item.label}</span>
                     </a>
                   );
@@ -130,7 +130,7 @@ export default function Contact() {
               </div>
             </div>
 
-            <div className="p-8 bg-blue-50 dark:bg-blue-900/10 border border-blue-100 dark:border-blue-900/20 rounded-[2rem]">
+            <div className="p-8 bg-[#73c2fb] dark:bg-blue-900/10 border border-blue-100 dark:border-blue-900/20 rounded-[2rem]">
               <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed text-center italic">
                 "Notre équipe s'engage à traiter votre demande sous 24 à 48 heures ouvrables. CORDIALIS GROUPS sarl garantit la confidentialité totale de vos échanges."
               </p>

@@ -39,7 +39,7 @@ export default function NavbarSecured() {
 
   const navItems = [
     { href: '/', label: 'Accueil', icon: <FaHome /> },
-    { href: '/about', label: 'À propos', icon: <FaUser /> },
+    { href: '/about', label: 'About', icon: <FaUser /> },
     { href: '/services', label: 'Services', icon: <FaTools /> },
   ];
 

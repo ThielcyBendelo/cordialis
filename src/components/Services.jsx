@@ -43,10 +43,10 @@ export default function Services() {
         {/* En-tête de section */}
         <div className="text-center mb-16">
           <div className="flex justify-center mb-4">
-             <FaBuilding className="text-blue-700 text-3xl opacity-50" />
+             <FaBuilding className="text-[#73c2fb] text-3xl opacity-50" />
           </div>
           <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mt-2 uppercase tracking-tight">
-            Nos Pôles d'<span className="text-blue-700">Expertise</span>
+            Nos Pôles d'<span className="text-[#73c2fb]">Expertise</span>
           </h2>
           <div className="h-1.5 w-16 bg-blue-700 mx-auto mt-4 mb-6 rounded-full"></div>
           <p className="text-slate-500 dark:text-slate-400 font-medium max-w-2xl mx-auto">
@@ -62,10 +62,10 @@ export default function Services() {
               className="flex flex-col bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-8 shadow-sm hover:shadow-xl hover:shadow-blue-900/5 transition-all duration-300 group"
             >
               <div className="flex justify-between items-start mb-6">
-                <div className="text-4xl text-blue-700 dark:text-blue-500 bg-blue-50 dark:bg-blue-950/30 p-4 rounded-2xl group-hover:scale-105 transition-transform">
+                <div className="text-4xl text-[#73c2fb] dark:text-blue-500 bg-blue-50 dark:bg-blue-950/30 p-4 rounded-2xl group-hover:scale-105 transition-transform">
                   {service.icon}
                 </div>
-                <span className="text-[10px] font-bold bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300 px-4 py-1.5 rounded-full uppercase tracking-widest">
+                <span className="text-[10px] font-bold bg-[#73c2fb] dark:bg-blue-900/40 text-blue-700 dark:text-blue-300 px-4 py-1.5 rounded-full uppercase tracking-widest">
                   {service.tag}
                 </span>
               </div>
@@ -80,7 +80,7 @@ export default function Services() {
 
               {/* Bloc Engagement */}
               <div className="bg-slate-50 dark:bg-slate-950 p-5 rounded-2xl mb-6 border-l-4 border-blue-700">
-                <span className="text-[10px] text-blue-700 font-bold uppercase mb-1 block tracking-wider">Engagement Qualité</span>
+                <span className="text-[10px] text-[#73c2fb] font-bold uppercase mb-1 block tracking-wider">Engagement Qualité</span>
                 <p className="text-xs text-slate-600 dark:text-slate-400 italic leading-relaxed">{service.template}</p>
               </div>
 
@@ -96,8 +96,8 @@ export default function Services() {
               {/* Bouton de contact unique */}
               <div className="mt-auto">
                 <a
-                  href={`mailto:ingebalouiscar@://gmail.com : ${service.title}`}
-                  className="flex items-center justify-center gap-3 w-full py-4 bg-blue-700 hover:bg-blue-800 text-white font-bold rounded-xl shadow-lg shadow-blue-900/20 transition-all active:scale-95"
+                  href={`mailto:cordialisgroups@gmail.com : ${service.title}`}
+                  className="flex items-center justify-center gap-3 w-full py-4 bg-[#73c2fb] hover:bg-blue-800 text-white font-bold rounded-xl shadow-lg shadow-blue-900/20 transition-all active:scale-95"
                 >
                   <FaEnvelope />
                   <span>NOUS CONTACTER</span>

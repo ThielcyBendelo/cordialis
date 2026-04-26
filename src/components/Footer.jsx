@@ -23,27 +23,41 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-12 mb-12">
           
-          {/* Identité Groupe - Colonne Large */}
-          <div className="lg:col-span-2 flex flex-col items-center lg:items-start text-center lg:text-left">
-            <div className="flex items-center gap-3 mb-6 group">
-              <div className="p-2.5 bg-blue-700 rounded-xl shadow-lg shadow-blue-700/20 group-hover:scale-110 transition-transform">
-                <FaBuilding className="text-white text-xl" />
-              </div>
-              <div className="flex flex-col">
-                <span className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white leading-none">
-                  CORDIALIS
-                </span>
-                <span className="text-[10px] font-black tracking-[0.3em] text-blue-700 dark:text-blue-500 uppercase mt-1">
-                  Groups sarl
-                </span>
-              </div>
-            </div>
-            <p className="text-sm leading-relaxed max-w-sm text-slate-500 dark:text-slate-400">
-              Expertise multiservices en RD Congo. Nous cultivons vos 
-              <span className="text-blue-700 dark:text-blue-500 font-semibold"> racines numériques </span> 
-              pour bâtir une identité forte et pérenne.
-            </p>
-          </div>
+         {/* Identité Groupe - Colonne Large */}
+<div className="lg:col-span-2 flex flex-col items-center lg:items-start text-center lg:text-left">
+ <div 
+    className="flex items-center cursor-pointer group mb-6"
+    onClick={() => navigate('/')}
+  >
+    <div className="relative h-20 md:h-28 w-auto transition-transform duration-300 group-hover:scale-105 flex items-center">
+      <img 
+        src="/logo_paysage.png" 
+        alt="CORDIALIS GROUPS sarl" 
+        className="h-full w-auto object-contain py-1" 
+      />
+    </div>
+  </div>
+  
+  <p className="text-sm leading-relaxed max-w-sm text-slate-600 dark:text-slate-400">
+    L'excellence à l'intersection de la 
+    <span className="text-slate-900 dark:text-white font-semibold"> Finance</span>, de l'
+    <span className="text-slate-900 dark:text-white font-semibold"> Industrie </span> et de l'
+    <span className="text-slate-900 dark:text-white font-semibold"> Immobilier</span>. 
+    Nous transformons la 
+    <span className="text-[#73c2fb] font-bold italic"> complexité en opportunités </span> 
+    durables pour bâtir l'avenir de la RD Congo.
+  </p>
+
+  {/* Optionnel : Ajout de petits badges de secteurs pour renforcer le visuel */}
+  <div className="flex gap-4 mt-6 opacity-70 grayscale hover:grayscale-0 transition-all">
+    <div className="h-[1px] w-8 bg-slate-300 dark:bg-slate-700 self-center"></div>
+    <span className="text-[10px] uppercase tracking-widest font-bold">Investir</span>
+    <span className="text-[10px] uppercase tracking-widest font-bold">Bâtir</span>
+    <span className="text-[10px] uppercase tracking-widest font-bold">Innover</span>
+  </div>
+</div>
+
+    
 
           {/* Navigation Rapide */}
           <div className="flex flex-col items-center lg:items-start">
@@ -51,10 +65,10 @@ export default function Footer() {
               Navigation
             </h4>
             <ul className="space-y-3 text-sm font-medium">
-              <li><Link to="/" className="hover:text-blue-700 dark:hover:text-blue-400 transition-colors">Accueil Officiel</Link></li>
-              <li><Link to="/about" className="hover:text-blue-700 dark:hover:text-blue-400 transition-colors">Notre Groupe</Link></li>
-              <li><Link to="/services" className="hover:text-blue-700 dark:hover:text-blue-400 transition-colors">Expertises</Link></li>
-              <li><Link to="/contact" className="hover:text-blue-700 dark:hover:text-blue-400 transition-colors">Nous Contacter</Link></li>
+              <li><Link to="/" className="hover:text-[#73c2fb] dark:hover:text-[#73c2fb] transition-colors">Accueil Officiel</Link></li>
+              <li><Link to="/about" className="hover:text-[#73c2fb] dark:hover:text-[#73c2fb] transition-colors">Notre Groupe</Link></li>
+              <li><Link to="/services" className="hover:text-[#73c2fb] dark:hover:text-[#73c2fb] transition-colors">Expertises</Link></li>
+              <li><Link to="/contact" className="hover:text-[#73c2fb] dark:hover:text-[#73c2fb] transition-colors">Nous Contacter</Link></li>
             </ul>
           </div>
 
@@ -111,7 +125,7 @@ export default function Footer() {
     </div>
 
     <p className="text-slate-400 dark:text-slate-600 text-center md:text-left">
-      © {currentYear} <span className="text-blue-700">CORDIALIS GROUPS sarl. RCCM: CD/KNG/RCCM/25-B-00764.</span> — Excellence & Intégrité
+      © {currentYear} <span className="texst-[#73c2fb]">CORDIALIS GROUPS sarl. RCCM: CD/KNG/RCCM/25-B-00764.</span> — Excellence & Intégrité
     </p>
   </div>
 
@@ -121,7 +135,7 @@ export default function Footer() {
       <span className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></span>
       Systèmes Opérationnels
     </span>
-    <span className="hover:text-blue-700 cursor-pointer transition-colors">Mentions Légales</span>
+    <span className="hover:text-[#73c2fb] cursor-pointer transition-colors">Mentions Légales</span>
   </div>
 </div>
 </div>

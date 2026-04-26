@@ -10,8 +10,8 @@ export const profileImage = '/images/logo_portrait.png';
 export const profile1Image = '/images/logo_portrait.png';
 export const bgImage = '/images/background.png';
 export const programmationImage = '/images/image.programmation2.jpg';
-export const logoImage = '/images/logo_paysage.png';
-export const logoImages = '/images/logo_paysage.png';
+export const logoImage = '/images/icone_logo.png';
+export const logoImages = '/images/icone_logo.png';
 
 export const about =
   "Le monde des affaires évolue constamment. Notre force réside dans notre capacité à évoluer avec lui. Voici pourquoi nous sommes le partenaire:";

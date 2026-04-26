@@ -47,7 +47,7 @@ export default function About() {
  
 
   return (
-    <div className="bg-slate-50 dark:bg-slate-950  min-h-screen transition-colors duration-300">
+    <div className=" py-24 px-6 bg-slate-50 dark:bg-slate-950 relative min-h-screen transition-colors duration-300">
       <motion.section
         className="max-w-6xl mx-auto px-6 pb-24"
         initial="hidden"
@@ -61,13 +61,13 @@ export default function About() {
           <motion.div className="lg:col-span-4 flex flex-col items-center" variants={itemVariants}>
             <div className="relative group">
               {/* Aura de couleur bleue pour Cordialis */}
-              <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-blue-900 rounded-full blur opacity-20 group-hover:opacity-40 transition duration-1000"></div>
+              <div className="absolute -inset-1 bg-gradient-to-r from-[#73c2fb] rounded-full blur opacity-20 group-hover:opacity-40 transition duration-1000"></div>
               <LazyImage
                 src={profileImg}
                 alt="Directeur CORDIALIS"
                 className="relative w-56 h-56 md:w-72 md:h-72 rounded-full object-cover border-4 border-white dark:border-slate-900 shadow-2xl"
               />
-              <div className="absolute bottom-6 right-6 bg-blue-700 p-4 rounded-full border-4 border-white dark:border-slate-950 text-white shadow-2xl">
+              <div className="absolute bottom-6 right-6 bg-[#73c2fb] p-4 rounded-full border-4 border-white dark:border-slate-950 text-white shadow-2xl">
                 <FaBuilding size={24} />
               </div>
             </div>
@@ -75,12 +75,12 @@ export default function About() {
             <div className="mt-8 text-center bg-white dark:bg-slate-900/50 p-8 rounded-3xl border border-slate-200 dark:border-slate-800 w-full shadow-lg backdrop-blur-md">
               <h3 className="text-slate-900 dark:text-white font-bold text-2xl mb-1 tracking-tight uppercase">Racines &
                  identité</h3>
-              <p className="text-blue-700 font-bold text-xs uppercase tracking-[0.2em]">CORDIALIS GROUPS sarl</p>
+              <p className="text-[#73c2fb] font-bold text-xs uppercase tracking-[0.2em]">CORDIALIS GROUPS sarl</p>
               <div className="mt-4 pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-center gap-2 text-slate-500 text-sm">
                 <FaMapMarkerAlt className="text-blue-700" /> Kinshasa, RDC
               </div>
               
-              <button className="mt-6 flex items-center justify-center gap-2 w-full py-4 bg-slate-900 dark:bg-blue-800 hover:bg-blue-700 text-white text-xs font-bold rounded-xl transition-all shadow-md">
+              <button className="mt-6 flex items-center justify-center gap-2 w-full py-4 bg-[#73c2fb] dark:bg-[#73c2fb] hover:bg-blue-700 text-white text-xs font-bold rounded-xl transition-all shadow-md">
                 <FaFileDownload /> BROCHURE CORPORATE
               </button>
             </div>
@@ -89,9 +89,9 @@ export default function About() {
           {/* Colonne Droite : Vision du Groupe */}
           <div className="lg:col-span-8">
             <motion.div variants={itemVariants}>
-              <h2 className="text-4xl md:text-6xl font-bold text-slate-900 dark:text-white mb-6 tracking-tight leading-none">
+              <h2 className="text-4xl md:text-6xl font-bold text-slate-900 dark:text-[#73c2fb] mb-6 tracking-tight leading-none">
                 Racines Fortes, <br />
-                <span className="text-blue-700">L'adaptabilité au service de l'Excellence</span>
+                <span className="text-[#73c2fb] dark:text-white">L'adaptabilité au service de l'Excellence</span>
               </h2>
               <p className="text-slate-600 dark:text-slate-400 text-lg leading-relaxed mb-10 text-justify">
                 {about || "CORDIALIS GROUPS sarl est un consortium multiservices dédié au développement stratégique en République Démocratique du Congo. Nous combinons expertise locale et standards globaux pour offrir des solutions innovantes dans l'administration des systèmes et l'ingénierie d'affaires."}
@@ -106,7 +106,7 @@ export default function About() {
                   variants={itemVariants}
                   className="p-6 bg-white dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800 rounded-2xl hover:border-blue-600/50 hover:shadow-xl transition-all duration-300 group"
                 >
-                  <div className="text-blue-700 text-3xl mb-4 group-hover:scale-110 transition-transform">{item.icon}</div>
+                  <div className="text-[#73c2fb] text-3xl mb-4 group-hover:scale-110 transition-transform">{item.icon}</div>
                   <h4 className="text-slate-900 dark:text-white font-bold text-lg mb-2 tracking-tight">{item.title}</h4>
                   <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">{item.text}</p>
                 </motion.div>
@@ -118,8 +118,8 @@ export default function About() {
               variants={itemVariants}
               className="mt-12 p-8 bg-blue-50 dark:bg-slate-900 border-l-4 border-blue-700 rounded-r-3xl"
             >
-              <h5 className="text-blue-700 font-bold uppercase text-xs mb-2 tracking-widest italic">Notre philosophie</h5>
-              <p className="text-slate-800 dark:text-slate-200 text-xl font-medium italic">
+              <h5 className="text-[#73c2fb] font-bold uppercase text-xs mb-2 tracking-widest italic">Notre philosophie</h5>
+              <p className="!text-lime-400 dark:text-slate-200 text-xl font-medium italic">
                 Comme un arbre...
               </p>
               <p className="text-slate-800 dark:text-slate-200 text-xl font-medium italic">

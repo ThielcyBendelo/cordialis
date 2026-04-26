@@ -14,7 +14,7 @@ function GoogleMapsSection() {
             </div>
           </div>
           <h2 className="text-4xl md:text-5xl font-black text-slate-900 dark:text-white uppercase tracking-tighter">
-            Ancrage <span className="text-blue-700">Géographique</span>
+            Ancrage <span className="text-[#73c2fb]">Géographique</span>
           </h2>
           <div className="h-1.5 w-16 bg-blue-700 mx-auto mt-6 rounded-full"></div>
           <p className="mt-6 text-slate-500 dark:text-slate-400 font-medium italic">
@@ -45,10 +45,10 @@ function GoogleMapsSection() {
               <div className="space-y-8">
                 <div className="flex items-start gap-5">
                   <div className="p-3 bg-blue-50 dark:bg-blue-900/20 rounded-xl">
-                    <FaMapMarkerAlt className="text-blue-700" />
+                    <FaMapMarkerAlt className="text-[#73c2fb]" />
                   </div>
                   <div>
-                    <h4 className="text-[10px] font-black text-blue-700 dark:text-blue-500 uppercase tracking-[0.2em] mb-1">Siège Social</h4>
+                    <h4 className="text-[10px] font-black text-[#73c2fb] dark:text-blue-500 uppercase tracking-[0.2em] mb-1">Siège Social</h4>
                     <p className="text-slate-700 dark:text-slate-200 text-sm font-bold leading-relaxed">
                       Avenue Dibaya, 61B,<br />
                       Commune de Kasa-Vubu, Kinshasa, RDC
@@ -58,20 +58,20 @@ function GoogleMapsSection() {
 
                 <div className="flex items-start gap-5">
                   <div className="p-3 bg-blue-50 dark:bg-blue-900/20 rounded-xl">
-                    <FaPhoneAlt className="text-blue-700" />
+                    <FaPhoneAlt className="text-[#73c2fb]" />
                   </div>
                   <div>
-                    <h4 className="text-[10px] font-black text-blue-700 dark:text-blue-500 uppercase tracking-[0.2em] mb-1">Secrétariat</h4>
+                    <h4 className="text-[10px] font-black text-[#73c2fb] dark:text-blue-500 uppercase tracking-[0.2em] mb-1">Secrétariat</h4>
                     <p className="text-slate-700 dark:text-slate-200 text-sm font-bold">+243 811 349 537</p>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-5">
                   <div className="p-3 bg-blue-50 dark:bg-blue-900/20 rounded-xl">
-                    <FaEnvelope className="text-blue-700" />
+                    <FaEnvelope className="text-[#73c2fb]" />
                   </div>
                   <div>
-                    <h4 className="text-[10px] font-black text-blue-700 dark:text-blue-500 uppercase tracking-[0.2em] mb-1">Correspondance</h4>
+                    <h4 className="text-[10px] font-black text-[#73c2fb] dark:text-blue-500 uppercase tracking-[0.2em] mb-1">Correspondance</h4>
                     <p className="text-slate-700 dark:text-slate-200 text-sm font-bold break-all">cordialisgroups@gmail.com</p>
                   </div>
                 </div>
@@ -79,7 +79,7 @@ function GoogleMapsSection() {
 
               <button 
                 onClick={() => window.open('https://www.google.com/maps?q=Avenue+Kimwenza+A%2FA25,+Kinshasa,+DR+Congo', '_blank')}
-                className="mt-10 w-full py-4 bg-blue-700 hover:bg-blue-800 text-white text-xs font-black uppercase tracking-widest rounded-2xl transition-all shadow-xl shadow-blue-700/20 flex items-center justify-center gap-3 active:scale-95"
+                className="mt-10 w-full py-4 bg-[#73c2fb] hover:bg-blue-800 text-gray-400 text-xs font-black uppercase tracking-widest rounded-2xl transition-all shadow-xl shadow-blue-700/20 flex items-center justify-center gap-3 active:scale-95"
               >
                 <FaRoute /> Lancer l'itinéraire
               </button>
